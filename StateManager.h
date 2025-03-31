@@ -1,4 +1,5 @@
 #pragma once
+#include "Board.h"
 
 class GameScreen;
 
@@ -11,11 +12,14 @@ public:
 	enum class Screen
 	{
 		StartScreen,
+		SettingScreen,
 		GamePVP,
 		EndScreen,
 	};
 
 	void switchScreen(Screen newScreen);
+
+	Board* board;
 
 	GameScreen* currentScreen;
 	GameScreen* nextScreen;

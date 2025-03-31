@@ -75,6 +75,9 @@
     <ClCompile Include="Board.cpp">
       <Filter>Source Files\Tic_tac_toe</Filter>
     </ClCompile>
+    <ClCompile Include="SettingScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="Board.h">
       <Filter>Header Files\Tic_tac_toe</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingScreen.h">
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@ GamePVP::GamePVP(StateManager* stateManager) : GameScreen(stateManager)
 {
 	pause = false;
 	createGUI();
-	board = new Board();
+    stateManager->board->reset();
 }
 
 GamePVP::~GamePVP()
@@ -19,11 +19,14 @@ void GamePVP::renderScreen()
     //render background
     SDL_RenderCopy(gWindow->getRenderer(), AssetManager::getInstance()->getTexture("game_pvp_background.png"), NULL, NULL);
 	//render board
-	board->renderBoard();
+	stateManager->board->renderBoard();
+	//render winner
+    if (stateManager->board->winner != 0)
+    {
+        SDL_RenderCopy(gWindow->getRenderer(), stateManager->board->win_case, NULL, &stateManager->board->rect);
+    }
 
-    // std::cout << std::endl;
     renderWidget();
-
 
     if (pause)
     {
@@ -37,8 +40,9 @@ void GamePVP::renderScreen()
 
 void GamePVP::updateScreen(float deltaTime)
 {
-    if (board->winner != 0)
+    if (stateManager->board->winner != 0)
     {
+		SDL_Delay(3000);
 		stateManager->switchScreen(StateManager::Screen::EndScreen);
     }
 }
@@ -66,7 +70,7 @@ void GamePVP::handleEvent(const SDL_Event& event)
             }
             if (event.type == SDL_MOUSEBUTTONDOWN)
             {
-                board->handleBoardEvent();
+                stateManager->board->handleBoardEvent();
             }
         }
     }
@@ -76,7 +80,7 @@ void GamePVP::handleEvent(const SDL_Event& event)
 
 void GamePVP::createGUI()
 {
-    createButton("button_home.png", { 1230, 752 }, std::bind(&GamePVP::goToMenu, this));
+    createButton("button_home.png", { 1090, 10 }, std::bind(&GamePVP::goToMenu, this));
     pauseButton = new Button("button_pause.png", { 115, 15 }, std::bind(&GamePVP::switchPause, this));
     resumeButton = new Button("button_resume.png", { 115, 15 }, std::bind(&GamePVP::switchPause, this));
 }

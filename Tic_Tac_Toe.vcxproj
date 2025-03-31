@@ -139,6 +139,7 @@
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GUIComponent.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SettingScreen.cpp" />
     <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GUIComponent.h" />
     <ClInclude Include="Settings.h" />
+    <ClInclude Include="SettingScreen.h" />
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="Window.h" />

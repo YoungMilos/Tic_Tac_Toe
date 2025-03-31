@@ -3,6 +3,7 @@
 #include "StartScreen.h"
 #include "GamePVP.h"
 #include "EndScreen.h"
+#include "SettingScreen.h"
 
 #include <iostream> //TODO:remove
 
@@ -34,6 +35,9 @@ void StateManager::switchScreen(Screen newScreen)
 		break;
 	case Screen::EndScreen:
 		nextScreen = new EndScreen(this);
+		break;
+	case Screen::SettingScreen:
+		nextScreen = new SettingScreen(this);
 		break;
 	default:
 		break;

@@ -50,7 +50,7 @@ void EndScreen::createGUI()
 {
     createButton("button_restart.png", { 555, 500 }, std::bind(&EndScreen::goToGame, this));
     createButton("button_exit.png", { 555, 570 }, []() { gQuit = true; });
-    createButton("button_home.png", { 1230, 752 }, std::bind(&EndScreen::goToMenu, this));
+    createButton("button_home.png", { 1090, 10 }, std::bind(&EndScreen::goToMenu, this));
 }
 
 void EndScreen::goToMenu()

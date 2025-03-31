@@ -31,6 +31,4 @@ private:
     Button* resumeButton;
     void switchPause();
     void createItem();
-
-    Board* board;
 };
