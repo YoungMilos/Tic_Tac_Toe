@@ -24,10 +24,11 @@ private:
 
 	SDL_Rect cell_rect;
 	int gameBoard[BOARD_WIDTH][BOARD_HEIGHT];
-	int nextMove = O_CELL;
+	
 
 	Mix_Chunk* moveSound;
 public:
+	bool moved = false;
 	SDL_Texture* cell_x;
 	SDL_Texture* cell_o;
 
@@ -41,4 +42,5 @@ public:
 	int winner = 0;
 	SDL_Rect rect;
 	SDL_Texture* win_case;
+	int nextMove = O_CELL;
 };

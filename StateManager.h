@@ -20,7 +20,9 @@ public:
 	void switchScreen(Screen newScreen);
 
 	Board* board;
-
 	GameScreen* currentScreen;
 	GameScreen* nextScreen;
+
+	int time = 60;
+	double timeOut;
 };

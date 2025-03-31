@@ -69,6 +69,7 @@ void Board::move(int col, int row)
 	if (row >= 0 && row < BOARD_HEIGHT && col >= 0 && col < BOARD_WIDTH && gameBoard[col][row] == EMPTY_CELL)
 	{
 		Mix_PlayChannel(-1, moveSound, 0);
+		moved = true;
 		gameBoard[col][row] = nextMove;
 		nextMove = (nextMove == O_CELL) ? X_CELL : O_CELL;
 	}
@@ -183,7 +184,7 @@ int Board::isWin(int col, int row)
         rect.h = 200;
        // SDL_RenderCopy(gWindow->getRenderer(), win_vertical, NULL, &rect);
 		win_case = win_vertical;
-
+        
         return nextMove;
     }
 

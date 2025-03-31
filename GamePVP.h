@@ -19,12 +19,8 @@ public:
     void updateScreen(float deltaTime);
     void handleEvent(const SDL_Event& event);
 private:
-    int** map;
     void createGUI();
     void goToMenu();
-    double timeOut;
-    double startingTime;
-    int maxScore;
     bool pause;
 
     Button* pauseButton;

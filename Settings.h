@@ -17,4 +17,3 @@
 
 #define BOARD_X 40
 #define BOARD_Y 70
-

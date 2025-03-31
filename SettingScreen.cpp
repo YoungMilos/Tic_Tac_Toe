@@ -2,6 +2,7 @@
 
 SettingScreen::SettingScreen(StateManager* stateManager) : GameScreen(stateManager)
 {
+
 	createGUI();
 	stateManager->board = new Board();
 	cell_o_assets.push_back("cell_o.png");
@@ -21,6 +22,8 @@ SettingScreen::SettingScreen(StateManager* stateManager) : GameScreen(stateManag
 	o_rect->y = 300;
 	o_rect->w = 80;
 	o_rect->h = 80;
+
+	stateManager->time = 60;
 }
 
 
@@ -39,6 +42,23 @@ void SettingScreen::renderScreen()
 	SDL_RenderCopy(gWindow->getRenderer(), stateManager->board->cell_o, NULL, o_rect);
 	//render button
 	renderWidget();
+
+	//render time
+	SDL_Texture* text;
+	SDL_Rect time_rect;
+
+
+
+	int settingTime = stateManager->time;
+	std::stringstream ss;
+	ss << "Time: ";
+	ss << settingTime;
+	std::string time = ss.str();
+	text = AssetManager::getInstance()->getTexturefromText(time + ",orange-juice-2.0.ttf,60,255,255,255");
+	SDL_QueryTexture(text, NULL, NULL, &time_rect.w, &time_rect.h);
+	time_rect.x = (SCREEN_WIDTH - time_rect.w) / 2;
+	time_rect.y = 410;
+	SDL_RenderCopy(gWindow->getRenderer(), text, NULL, &time_rect);
 }
 
 void SettingScreen::updateScreen(float deltaTime)
@@ -58,6 +78,8 @@ void SettingScreen::createGUI()
 	createButton("button_left.png", { 400, 200 }, std::bind(&SettingScreen::changeX, this, false));
 	createButton("button_right.png", { 800, 300 }, std::bind(&SettingScreen::changeO, this, true));
 	createButton("button_left.png", { 400, 300 }, std::bind(&SettingScreen::changeO, this, false));
+	createButton("button_right.png", { 800, 400 }, std::bind(&SettingScreen::changeTime, this, true));
+	createButton("button_left.png", { 400, 400 }, std::bind(&SettingScreen::changeTime, this, false));
 }
 
 void SettingScreen::gotoMenu()
@@ -93,12 +115,20 @@ void SettingScreen::changeO(bool increase)
 	}
 }
 
+void SettingScreen::changeTime(bool increase)
+{
+	if (increase)
+	{
+		if (stateManager->time < 120) stateManager->time++;
+	}
+	else
+	{
+		if (stateManager->time > 30) stateManager->time--;
+	}
+}
+
+
 void SettingScreen::startGame()
 {
 	stateManager->switchScreen(StateManager::Screen::GamePVP);
 }
-
-
-
-
-
