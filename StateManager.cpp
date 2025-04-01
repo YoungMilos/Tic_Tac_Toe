@@ -4,7 +4,9 @@
 #include "GamePVP.h"
 #include "EndScreen.h"
 #include "SettingScreen.h"
-
+#include "GamePVE.h"
+#include "PveEndScreen.h"
+#include "PveSettingScreen.h"
 #include <iostream> //TODO:remove
 
 StateManager::StateManager()
@@ -38,6 +40,15 @@ void StateManager::switchScreen(Screen newScreen)
 		break;
 	case Screen::SettingScreen:
 		nextScreen = new SettingScreen(this);
+		break;
+	case Screen::GamePVE:
+		nextScreen = new GamePVE(this);
+		break;
+	case Screen::PveEndScreen:
+		nextScreen = new PveEndScreen(this);
+		break;
+	case Screen::PveSettingScreen:
+		nextScreen = new PveSettingScreen(this);
 		break;
 	default:
 		break;

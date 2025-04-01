@@ -9,10 +9,13 @@ GamePVP::GamePVP(StateManager* stateManager) : GameScreen(stateManager)
 	pause = false;
 	createGUI();
     stateManager->board->reset();
+	stateManager->board->isGamePVE = false;
 }
 
 GamePVP::~GamePVP()
 {
+	delete pauseButton;
+	delete resumeButton;
 }
 
 void GamePVP::renderScreen()

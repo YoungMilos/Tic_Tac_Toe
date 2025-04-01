@@ -18,6 +18,7 @@ EndScreen::EndScreen(StateManager* stateManager) : GameScreen(stateManager)
 
 EndScreen::~EndScreen()
 {
+
 }
 
 void drawRect(SDL_Renderer* renderer, SDL_Rect rect, SDL_Color color);

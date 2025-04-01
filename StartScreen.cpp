@@ -11,6 +11,11 @@ StartScreen::StartScreen(StateManager* stateManager) : GameScreen(stateManager)
 
 StartScreen::~StartScreen()
 {
+	for (auto& component : GUIComponents)
+	{
+		delete component;
+	}
+	GUIComponents.clear();
 }
 
 void StartScreen::renderScreen()
@@ -36,11 +41,17 @@ void StartScreen::createGUI()
 {
     createButton("button_pvp.png", { 555, 400 }, std::bind(&StartScreen::startPVPGame, this));
     createButton("button_exit.png", { 555, 480 }, []() { gQuit = true; });
+	createButton("button_pve.png", { 555, 320 }, std::bind(&StartScreen::startPVEGame, this));
 }
 
 void StartScreen::startPVPGame()
 {
     stateManager->switchScreen(StateManager::Screen::SettingScreen);
+}
+
+void StartScreen::startPVEGame()
+{
+	stateManager->switchScreen(StateManager::Screen::PveSettingScreen);
 }
 
 

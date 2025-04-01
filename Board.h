@@ -6,11 +6,12 @@
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
 #include "AssetManager.h"
-
+#include "AI.h"
 #include "Settings.h"
 #include "Window.h"
 
 extern Window* gWindow;
+extern bool gSoundOn;
 
 class Board
 {
@@ -20,18 +21,25 @@ private:
 	SDL_Texture* win_down;
 	SDL_Texture* win_up;
 	SDL_Texture* win_vertical;
-	
-
-	SDL_Rect cell_rect;
 	int gameBoard[BOARD_WIDTH][BOARD_HEIGHT];
-	
-
+	GomokuAI* gomokuAI;
+	SDL_Rect cell_rect;
 	Mix_Chunk* moveSound;
 public:
+	bool isGamePVE;
 	bool moved = false;
 	SDL_Texture* cell_x;
 	SDL_Texture* cell_o;
-
+	void getGameBoard(int** board)
+	{
+		for (int i = 0; i < BOARD_WIDTH; i++)
+		{
+			for (int j = 0; j < BOARD_HEIGHT; j++)
+			{
+				board[i][j] = gameBoard[i][j];
+			}
+		}
+	}
 	Board();
 	~Board();
 	void renderBoard();

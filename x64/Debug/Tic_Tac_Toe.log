@@ -1,15 +1,2 @@
-﻿  Board.cpp
-  EndScreen.cpp
-  GamePVP.cpp
-  GameScreen.cpp
-  SettingScreen.cpp
-C:\Users\central cee\source\repos\Tic_Tac_Toe\Tic_Tac_Toe\SettingScreen.cpp(94,46): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\central cee\source\repos\Tic_Tac_Toe\Tic_Tac_Toe\SettingScreen.cpp(99,46): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\central cee\source\repos\Tic_Tac_Toe\Tic_Tac_Toe\SettingScreen.cpp(108,46): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\central cee\source\repos\Tic_Tac_Toe\Tic_Tac_Toe\SettingScreen.cpp(113,46): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  StartScreen.cpp
-  StateManager.cpp
-  game.cpp
-  main.cpp
-  Generating Code...
+﻿  PveEndScreen.cpp
   Tic_Tac_Toe.vcxproj -> C:\Users\central cee\source\repos\Tic_Tac_Toe\x64\Debug\Tic_Tac_Toe.exe

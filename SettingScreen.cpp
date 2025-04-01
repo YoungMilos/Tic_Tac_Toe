@@ -31,6 +31,8 @@ SettingScreen::~SettingScreen()
 {
 	cell_x_assets.clear();
 	cell_o_assets.clear();
+	delete x_rect;
+	delete o_rect;
 }
 
 void SettingScreen::renderScreen()

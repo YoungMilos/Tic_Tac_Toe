@@ -130,29 +130,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AI.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="EndScreen.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="GamePVE.cpp" />
     <ClCompile Include="GamePVP.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GUIComponent.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PveEndScreen.cpp" />
+    <ClCompile Include="PveSettingScreen.cpp" />
     <ClCompile Include="SettingScreen.cpp" />
     <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AI.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="EndScreen.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="GamePVE.h" />
     <ClInclude Include="GamePVP.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GUIComponent.h" />
+    <ClInclude Include="PveEndScreen.h" />
+    <ClInclude Include="PveSettingScreen.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="SettingScreen.h" />
     <ClInclude Include="StartScreen.h" />

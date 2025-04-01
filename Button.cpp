@@ -13,6 +13,7 @@ Button::Button(const std::string fileName_, SDL_Point position, std::function<vo
 
 Button::~Button()
 {
+	Mix_FreeChunk(buttonSound);
 }
 
 bool Button::isSelectable()

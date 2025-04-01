@@ -5,6 +5,7 @@ using namespace std;
 
 Board::Board()
 {
+	gomokuAI = new GomokuAI(4);
 	moveSound = AssetManager::getInstance()->getSoundBuffer("button_click_sound.wav");
 	cell_emtpy = AssetManager::getInstance()->getTexture("cell_empty.png");
 	cell_x = AssetManager::getInstance()->getTexture("cell_x.png");
@@ -26,6 +27,13 @@ Board::Board()
 
 Board::~Board()
 {
+	SDL_DestroyTexture(cell_emtpy);
+	SDL_DestroyTexture(cell_x);
+    SDL_DestroyTexture(cell_o);
+	SDL_DestroyTexture(win_up);
+	SDL_DestroyTexture(win_down);
+	SDL_DestroyTexture(win_horizontal);
+	SDL_DestroyTexture(win_vertical);
 }
 
 void Board::reset()
@@ -38,6 +46,7 @@ void Board::reset()
         }
     }
     winner = 0;
+	nextMove = O_CELL;
 }
 
 void Board::renderBoard()
@@ -68,28 +77,37 @@ void Board::move(int col, int row)
 {
 	if (row >= 0 && row < BOARD_HEIGHT && col >= 0 && col < BOARD_WIDTH && gameBoard[col][row] == EMPTY_CELL)
 	{
-		Mix_PlayChannel(-1, moveSound, 0);
+        if (gSoundOn)
+        {
+			Mix_PlayChannel(-1, moveSound, 0);
+        }
+		
 		moved = true;
 		gameBoard[col][row] = nextMove;
 		nextMove = (nextMove == O_CELL) ? X_CELL : O_CELL;
+        winner = isWin(col,row);
 	}
 }
 
 void Board::handleBoardEvent()
 {
-	int x, y;
-	SDL_GetMouseState(&x, &y);
-	x -= BOARD_X;
-	y -= BOARD_Y;
-	if (x >= 0 && x < BOARD_WIDTH * 40 && y >= 0 && y < BOARD_HEIGHT * 40)
-	{
-		move(x / 40, y / 40);
-		renderBoard();
-        cout << "oke" << endl;
-
-
-		winner = isWin(x / 40, y / 40);
-	}
+    if (isGamePVE && nextMove == X_CELL)
+    {
+		pair<int, int> AI_move = gomokuAI->bestMove(gameBoard);
+		move(AI_move.first, AI_move.second);
+    }
+    else
+    {
+        int x, y;
+        SDL_GetMouseState(&x, &y);
+        x -= BOARD_X;
+        y -= BOARD_Y;
+        if (x >= 0 && x < BOARD_WIDTH * 40 && y >= 0 && y < BOARD_HEIGHT * 40)
+        {
+            move(x / 40, y / 40);
+            renderBoard();
+        }
+    }
 }
 
 int Board::isWin(int col, int row)

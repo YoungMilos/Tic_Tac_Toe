@@ -20,6 +20,7 @@ public:
 private:
     void createGUI();
     void startPVPGame();
+	void startPVEGame();
     void exitGame();
     void switchAudioMode();
 };
